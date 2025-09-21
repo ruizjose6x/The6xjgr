@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6XJGR Links</title>
+
+  <style>
+    /* Importación de fuente desde Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+    /* Estilos generales del body */
+    body {
+      margin: 0;
+      font-family: 'Fredoka One', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: flex-start; 
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      overflow-x: hidden;
+      background: radial-gradient(circle at top, #1a0055, #0a0022 70%, #000010 100%);
+      background-attachment: fixed;
+      position: relative;
+      padding: 60px 0;
+    }
+
+    /* Fondo con textura */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    /* Contenedor principal */
+    .container {
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      background: rgba(15, 15, 30, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(148, 0, 255, 0.4);
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1s ease;
+      margin: 20px 0;
+    }
+
+    /* Wrapper de la imagen de perfil */
+    .profile-wrapper {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 20px;
+    }
+
+    /* Imagen de perfil circular con borde y sombra */
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #5a00cc;
+      box-shadow: 0 0 18px #5a00cc;
+      background: url("imagen6x.jpg") center/cover no-repeat;
+      position: relative;
+      z-index: 2;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    /* Espadas decorativas alrededor de la imagen */
+    .sword {
+      position: absolute;
+      width: 130px;
+      top: -20px;
+      z-index: 1;
+      opacity: 0.9;
+    }
+    .sword.left { left: -60px; transform: rotate(90deg); }
+    .sword.right { right: -60px; transform: rotate(180deg); }
+
+    /* Título principal */
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px #ff80ff, 0 0 15px #00eaff;
+    }
+
+    /* Botones de enlaces principales */
+    .link-btn {
+      display: block;
+      margin: 12px 0;
+      padding: 14px;
+      background: linear-gradient(90deg, #a84dff, #6633cc, #4db8ff);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.4);
+    }
+    .link-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(200, 100, 255, 0.7);
+    }
+
+    /* Sección de conexiones adicionales (Steam, Xbox, Epic) */
+    .connections {
+      text-align: left;                  /* Alinea el texto a la izquierda */
+      padding: 20px;                     /* Espacio interno */
+      border-top: 1px solid rgba(255,255,255,0.1); /* Línea superior ligera */
+      margin-top: 20px;                  /* Separación del contenido de arriba */
+    }
+
+    /* Título de la sección "Conexiones" */
+    .connections h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #aaa;
+    }
+
+    /* Cada ítem de conexión (Steam, Xbox, Epic) */
+    .connection-item {
+      display: flex;                     /* Imagen y texto en fila */
+      align-items: center;               /* Centrado vertical */
+      gap: 10px;                         /* Espacio entre logo y enlace */
+      margin-bottom: 12px;               /* Separación de cada ítem */
+    }
+
+    /* Imagen del logo de cada plataforma */
+    .connection-item img {
+      width: 22px;                       /* Ancho fijo */
+      height: 22px;                      /* Alto fijo */
+    }
+
+    /* Enlace del perfil de cada plataforma */
+    .connection-item a {
+      color: #fff;                       /* Texto blanco */
+      text-decoration: none;             /* Sin subrayado */
+      font-size: 14px;                   /* Tamaño de fuente más pequeño */
+    }
+
+    /* Hover sobre el enlace */
+    .connection-item a:hover {
+      text-decoration: underline;        /* Subraya al pasar el mouse */
+    }
+
+    /* Footer / pie de página */
+    .footer {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Animación de aparición */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Partículas de efecto en clic */
+    .particle {
+      position: absolute;
+      font-size: 18px;
+      pointer-events: none;
+      z-index: 10;
+      animation: pop 1s forwards ease-out;
+    }
+    @keyframes pop {
+      0% { transform: translate(0,0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) scale(0.6); opacity: 0; }
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 500px) {
+      h1 { font-size: 1.6rem; }
+      .profile-wrapper { width: 140px; height: 140px; }
+      .profile-img { width: 120px; height: 120px; }
+      .sword { width: 60px; }
+      .link-btn { font-size: 1rem; padding: 12px; }
+    }
+
+    /* Imagen decorativa "waifu" */
+    .waifu {
+      position: absolute;
+      bottom: 21px;
+      right: -91.4px;
+      width: 92px;
+      z-index: 2;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contenedor principal -->
+  <div class="container">
+
+    <!-- Imagen de perfil y espadas decorativas -->
+    <div class="profile-wrapper">
+      <img src="espadan1.png" alt="Espada izquierda" class="sword left">
+      <img src="espadan2.png" alt="Espada derecha" class="sword right">
+      <div class="profile-img" id="profileLink"></div>
+    </div>
+
+    <!-- Nombre principal -->
+    <h1>THE_6XJGR</h1>
+
+    <!-- Botones de enlaces principales -->
+    <a href="#" class="link-btn">TIKTOK</a>
+    <a href="#" class="link-btn">DISCORD</a>
+    <a href="#" class="link-btn">INSTAGRAM</a>
+    <a href="#" class="link-btn">BURRITOLAND</a>
+
+    <!-- Conexiones adicionales (Steam, Epic, Xbox) -->
+    <div class="connections">
+      <h3>Conexiones</h3>
+      
+      <div class="connection-item">
+        <img src="Steamlogo.png" alt="Steam">
+        <a href="#">Steam Profile</a>
+      </div>
+
+      <div class="connection-item">
+        <img src="Epiclogo.png" alt="Epic Games">
+        <a href="#">Epic Games</a>
+      </div>
+
+      <div class="connection-item">
+        <img src="Xboxlogo.png" alt="Xbox">
+        <a href="#">Xbox</a>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">@6xjgr</div>
+
+    <!-- Imagen decorativa extra -->
+    <img src="zerotwo.png" alt="Zero Two" class="waifu">
+  </div>
+
+  <!-- Script de partículas al hacer clic en la imagen de perfil -->
+  <script>
+    const profileLink = document.getElementById('profileLink');
+
+    profileLink.addEventListener('click', (e) => {
+      const rect = profileLink.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('span');
+        particle.innerHTML = '✨';
+        particle.classList.add('particle');
+
+        // Partículas salen desde el punto exacto donde se tocó
+        const x = (Math.random() - 0.5) * 500; // distancia horizontal
+        const y = (Math.random() - 0.5) * 500; // distancia vertical
+
+        particle.style.setProperty('--x', `${x}px`);
+        particle.style.setProperty('--y', `${y}px`);
+
+        particle.style.left = `${offsetX}px`;
+        particle.style.top = `${offsetY}px`;
+
+        profileLink.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 1200);
+      }
+    });
+  </script>
+</body>
+</html>
