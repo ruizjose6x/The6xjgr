@@ -6,10 +6,8 @@
   <title>6XJGR Links</title>
 
   <style>
-    /* Importación de fuente desde Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-    /* Estilos generales del body */
     body {
       margin: 0;
       font-family: 'Fredoka One', sans-serif;
@@ -26,7 +24,6 @@
       padding: 60px 0;
     }
 
-    /* Fondo con textura */
     body::before {
       content: "";
       position: absolute;
@@ -36,7 +33,6 @@
       z-index: 0;
     }
 
-    /* Contenedor principal */
     .container {
       text-align: center;
       max-width: 450px;
@@ -51,15 +47,14 @@
       margin: 20px 0;
     }
 
-    /* Wrapper de la imagen de perfil */
     .profile-wrapper {
       position: relative;
       width: 170px;
       height: 170px;
       margin: 0 auto 20px;
+      overflow: visible; /* partículas no bloquean */
     }
 
-    /* Imagen de perfil circular con borde y sombra */
     .profile-img {
       width: 150px;
       height: 150px;
@@ -68,12 +63,11 @@
       box-shadow: 0 0 18px #5a00cc;
       background: url("imagen6x.jpg") center/cover no-repeat;
       position: relative;
-      z-index: 2;
+      z-index: 2; /* suficiente para estar arriba de las espadas */
       margin: 0 auto;
       cursor: pointer;
     }
 
-    /* Espadas decorativas alrededor de la imagen */
     .sword {
       position: absolute;
       width: 130px;
@@ -84,14 +78,12 @@
     .sword.left { left: -60px; transform: rotate(90deg); }
     .sword.right { right: -60px; transform: rotate(180deg); }
 
-    /* Título principal */
     h1 {
       font-size: 2rem;
       margin-bottom: 25px;
       text-shadow: 0 0 8px #ff80ff, 0 0 15px #00eaff;
     }
 
-    /* Botones de enlaces principales */
     .link-btn {
       display: block;
       margin: 12px 0;
@@ -104,67 +96,62 @@
       border-radius: 10px;
       transition: 0.3s ease;
       box-shadow: 0 0 12px rgba(0, 200, 255, 0.4);
+      position: relative;
+      z-index: 5; /* asegura que sean clickeables */
     }
     .link-btn:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(200, 100, 255, 0.7);
     }
 
-    /* Sección de conexiones adicionales (Steam, Xbox, Epic) */
     .connections {
-      text-align: left;                  /* Alinea el texto a la izquierda */
-      padding: 20px;                     /* Espacio interno */
-      border-top: 1px solid rgba(255,255,255,0.1); /* Línea superior ligera */
-      margin-top: 20px;                  /* Separación del contenido de arriba */
+      text-align: left;
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 20px;
+      position: relative;
+      z-index: 5; /* también clickeables */
     }
 
-    /* Título de la sección "Conexiones" */
     .connections h3 {
       font-size: 16px;
       margin-bottom: 10px;
       color: #aaa;
     }
 
-    /* Cada ítem de conexión (Steam, Xbox, Epic) */
     .connection-item {
-      display: flex;                     /* Imagen y texto en fila */
-      align-items: center;               /* Centrado vertical */
-      gap: 10px;                         /* Espacio entre logo y enlace */
-      margin-bottom: 12px;               /* Separación de cada ítem */
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
     }
 
-    /* Imagen del logo de cada plataforma */
     .connection-item img {
-      width: 22px;                       /* Ancho fijo */
-      height: 22px;                      /* Alto fijo */
+      width: 22px;
+      height: 22px;
     }
 
-    /* Enlace del perfil de cada plataforma */
     .connection-item a {
-      color: #fff;                       /* Texto blanco */
-      text-decoration: none;             /* Sin subrayado */
-      font-size: 14px;                   /* Tamaño de fuente más pequeño */
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
     }
 
-    /* Hover sobre el enlace */
     .connection-item a:hover {
-      text-decoration: underline;        /* Subraya al pasar el mouse */
+      text-decoration: underline;
     }
 
-    /* Footer / pie de página */
     .footer {
       margin-top: 25px;
       font-size: 0.9rem;
       opacity: 0.8;
     }
 
-    /* Animación de aparición */
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* Partículas de efecto en clic */
     .particle {
       position: absolute;
       font-size: 18px;
@@ -177,7 +164,6 @@
       100% { transform: translate(var(--x), var(--y)) scale(0.6); opacity: 0; }
     }
 
-    /* Responsive para móviles */
     @media (max-width: 500px) {
       h1 { font-size: 1.6rem; }
       .profile-wrapper { width: 140px; height: 140px; }
@@ -186,7 +172,6 @@
       .link-btn { font-size: 1rem; padding: 12px; }
     }
 
-    /* Imagen decorativa "waifu" */
     .waifu {
       position: absolute;
       bottom: 21px;
@@ -199,54 +184,41 @@
 </head>
 <body>
 
-  <!-- Contenedor principal -->
   <div class="container">
-
-    <!-- Imagen de perfil y espadas decorativas -->
     <div class="profile-wrapper">
       <img src="espadan1.png" alt="Espada izquierda" class="sword left">
       <img src="espadan2.png" alt="Espada derecha" class="sword right">
       <div class="profile-img" id="profileLink"></div>
     </div>
 
-    <!-- Nombre principal -->
     <h1>THE_6XJGR</h1>
 
-    <!-- Botones de enlaces principales -->
-    <a href="#" class="link-btn">TIKTOK</a>
-    <a href="#" class="link-btn">DISCORD</a>
-    <a href="#" class="link-btn">INSTAGRAM</a>
-    <a href="#" class="link-btn">BURRITOLAND</a>
+    <!-- ahora con los links reales -->
+    <a href="https://www.tiktok.com/@6xjgr" target="_blank" class="link-btn">TIKTOK</a>
+    <a href="https://discord.com/invite/6Zcb2PyyQu" target="_blank" class="link-btn">DISCORD</a>
+    <a href="https://www.instagram.com/_6xjgr_" target="_blank" class="link-btn">INSTAGRAM</a>
+    <a href="https://discord.com/invite/D6Pnp26XBm" target="_blank" class="link-btn">BURRITOLAND</a>
 
-    <!-- Conexiones adicionales (Steam, Epic, Xbox) -->
     <div class="connections">
       <h3>Conexiones</h3>
-      
       <div class="connection-item">
         <img src="Steamlogo.png" alt="Steam">
-        <a href="#">Steam Profile</a>
+        <a href="https://s.team/p/gqpt-wqnd/FPVBJCCH" target="_blank">Steam Profile</a>
       </div>
-
       <div class="connection-item">
         <img src="Epiclogo.png" alt="Epic Games">
-        <a href="#">Epic Games</a>
+        <a href="https://store.epicgames.com/es-MX/u/d8ad574a03ef422684abc14a8ada16d7" target="_blank">Epic Games</a>
       </div>
-
       <div class="connection-item">
         <img src="Xboxlogo.png" alt="Xbox">
-        <a href="#">Xbox</a>
+        <a href="https://www.xbox.com/es-MX/play/user/The%206XJGR" target="_blank">Xbox</a>
       </div>
-
     </div>
 
-    <!-- Footer -->
     <div class="footer">@6xjgr</div>
-
-    <!-- Imagen decorativa extra -->
     <img src="zerotwo.png" alt="Zero Two" class="waifu">
   </div>
 
-  <!-- Script de partículas al hacer clic en la imagen de perfil -->
   <script>
     const profileLink = document.getElementById('profileLink');
 
@@ -260,9 +232,8 @@
         particle.innerHTML = '✨';
         particle.classList.add('particle');
 
-        // Partículas salen desde el punto exacto donde se tocó
-        const x = (Math.random() - 0.5) * 500; // distancia horizontal
-        const y = (Math.random() - 0.5) * 500; // distancia vertical
+        const x = (Math.random() - 0.5) * 500;
+        const y = (Math.random() - 0.5) * 500;
 
         particle.style.setProperty('--x', `${x}px`);
         particle.style.setProperty('--y', `${y}px`);
