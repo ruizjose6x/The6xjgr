@@ -47,7 +47,7 @@
       z-index: 1;
       animation: fadeIn 1s ease;
       margin: 40px auto;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .profile-wrapper {
@@ -144,20 +144,25 @@
       opacity: 0.8;
     }
 
-    /* ✅ Waifu fija en esquina inferior derecha */
-    .waifu {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 80px;
+    /* ✅ Waifu posicionada en la esquina inferior derecha del contenedor */
+    .waifu-container {
+      position: absolute;
+      bottom: 17px;
+      right: -79px;
       z-index: 2;
-      transition: transform 0.4s ease, opacity 0.3s ease;
+      width: 100px;
+      height: 120px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      pointer-events: none;
     }
 
-    .waifu.hidden {
-      opacity: 0;
-      transform: translateY(25px);
-      pointer-events: none;
+    .waifu {
+      width: 80px;
+      height: auto;
+      filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.7));
+      animation: float 3s ease-in-out infinite;
     }
 
     /* ✨ Partículas */
@@ -182,6 +187,11 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     /* 📱 Ajustes para móviles */
     @media (max-width: 600px) {
       .container {
@@ -201,10 +211,33 @@
         height: 110px;
       }
 
+      .waifu-container {
+        width: 80px;
+        height: 100px;
+        bottom: -25px;
+        right: -15px;
+      }
+
       .waifu {
         width: 65px;
-        bottom: 5px;
-        right: 5px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        width: 85%;
+        max-width: 280px;
+      }
+      
+      .waifu-container {
+        width: 70px;
+        height: 90px;
+        bottom: -20px;
+        right: -10px;
+      }
+
+      .waifu {
+        width: 55px;
       }
     }
   </style>
@@ -242,13 +275,15 @@
     </div>
 
     <div class="footer">@6xjgr</div>
+    
+    <!-- Waifu posicionada en la esquina del contenedor -->
+    <div class="waifu-container">
+      <img src="zerotwo.png" alt="Zero Two" class="waifu">
+    </div>
   </div>
-
-  <img src="zerotwo.png" alt="Zero Two" class="waifu" id="waifu">
 
   <script>
     const profileLink = document.getElementById('profileLink');
-    const waifu = document.getElementById('waifu');
 
     // ✨ Partículas más dispersas
     profileLink.addEventListener('click', (e) => {
@@ -268,17 +303,6 @@
         particle.style.top = `${offsetY}px`;
         profileLink.appendChild(particle);
         setTimeout(() => particle.remove(), 1200);
-      }
-    });
-
-    // 💫 Waifu desaparece más rápido
-    window.addEventListener('scroll', () => {
-      const container = document.querySelector('.container');
-      const rect = container.getBoundingClientRect();
-      if (rect.bottom < window.innerHeight - 60) {
-        waifu.classList.add('hidden');
-      } else {
-        waifu.classList.remove('hidden');
       }
     });
   </script>
