@@ -13,7 +13,7 @@
       font-family: 'Fredoka One', sans-serif;
       color: #fff;
       display: flex;
-      justify-content: flex-start; 
+      justify-content: center;
       align-items: center;
       min-height: 100vh;
       flex-direction: column;
@@ -21,7 +21,8 @@
       background: radial-gradient(circle at top, #1a0055, #0a0022 70%, #000010 100%);
       background-attachment: fixed;
       position: relative;
-      padding: 60px 0;
+      padding: 40px 0;
+      box-sizing: border-box;
     }
 
     body::before {
@@ -35,16 +36,17 @@
 
     .container {
       text-align: center;
-      max-width: 450px;
       width: 90%;
-      background: rgba(15, 15, 30, 0.8);
-      padding: 30px;
+      max-width: 450px;
+      background: rgba(15, 15, 30, 0.85);
+      padding: 30px 25px;
       border-radius: 20px;
       box-shadow: 0 0 25px rgba(148, 0, 255, 0.4);
       position: relative;
       z-index: 1;
       animation: fadeIn 1s ease;
-      margin: 20px 0;
+      margin: 0 auto;
+      overflow: hidden;
     }
 
     .profile-wrapper {
@@ -52,7 +54,7 @@
       width: 170px;
       height: 170px;
       margin: 0 auto 20px;
-      overflow: visible; /* partículas no bloquean */
+      overflow: visible;
     }
 
     .profile-img {
@@ -63,20 +65,23 @@
       box-shadow: 0 0 18px #5a00cc;
       background: url("imagen6x.jpg") center/cover no-repeat;
       position: relative;
-      z-index: 2; /* suficiente para estar arriba de las espadas */
+      z-index: 3;
       margin: 0 auto;
       cursor: pointer;
+      overflow: visible;
     }
 
     .sword {
       position: absolute;
       width: 130px;
       top: -20px;
-      z-index: 1;
+      z-index: 2;
       opacity: 0.9;
+      pointer-events: none;
     }
-    .sword.left { left: -60px; transform: rotate(90deg); }
-    .sword.right { right: -60px; transform: rotate(180deg); }
+
+    .sword.left { left: -65px; transform: rotate(90deg); }
+    .sword.right { right: -65px; transform: rotate(180deg); }
 
     h1 {
       font-size: 2rem;
@@ -96,9 +101,8 @@
       border-radius: 10px;
       transition: 0.3s ease;
       box-shadow: 0 0 12px rgba(0, 200, 255, 0.4);
-      position: relative;
-      z-index: 5; /* asegura que sean clickeables */
     }
+
     .link-btn:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(200, 100, 255, 0.7);
@@ -109,8 +113,6 @@
       padding: 20px;
       border-top: 1px solid rgba(255,255,255,0.1);
       margin-top: 20px;
-      position: relative;
-      z-index: 5; /* también clickeables */
     }
 
     .connections h3 {
@@ -147,39 +149,90 @@
       opacity: 0.8;
     }
 
+    /* ✅ Imagen waifu */
+    .waifu {
+      position: absolute;
+      bottom: 60px;
+      right: 167px;
+      width: 95px;
+      z-index: 2;
+      cursor: pointer;
+      transition: transform 0.6s ease, opacity 0.5s ease;
+    }
+
+    /* ✨ Animación de partículas */
+    .particle {
+      position: absolute;
+      color: #fff;
+      font-size: 16px;
+      pointer-events: none;
+      opacity: 1;
+      animation: fly 1.5s ease-out forwards;
+    }
+
+    @keyframes fly {
+      to {
+        transform: translate(var(--x), var(--y)) scale(0.4);
+        opacity: 0;
+      }
+    }
+
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
-    .particle {
-      position: absolute;
-      font-size: 18px;
-      pointer-events: none;
-      z-index: 10;
-      animation: pop 1s forwards ease-out;
-    }
-    @keyframes pop {
-      0% { transform: translate(0,0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--x), var(--y)) scale(0.6); opacity: 0; }
+    /* 📱 Mejoras responsivas */
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        padding: 25px 15px;
+      }
+
+      .profile-wrapper {
+        width: 140px;
+        height: 140px;
+      }
+
+      .profile-img {
+        width: 130px;
+        height: 130px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .link-btn {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .waifu {
+        width: 70px;
+        bottom: 15px;
+        right: 15px;
+      }
     }
 
-    @media (max-width: 500px) {
-      h1 { font-size: 1.6rem; }
-      .profile-wrapper { width: 140px; height: 140px; }
-      .profile-img { width: 120px; height: 120px; }
-      .sword { width: 60px; }
-      .link-btn { font-size: 1rem; padding: 12px; }
+    /* 📱 Extra para pantallas muy pequeñas (menos de 400px) */
+    @media (max-width: 400px) {
+      .container {
+        padding: 20px 10px;
+      }
+
+      .link-btn {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      .waifu {
+        width: 60px;
+        bottom: 10px;
+        right: 10px;
+      }
     }
 
-    .waifu {
-      position: absolute;
-      bottom: 21px;
-      right: -91.4px;
-      width: 92px;
-      z-index: 2;
-      pointer-events: none;
-    }
   </style>
 </head>
 <body>
@@ -193,59 +246,56 @@
 
     <h1>THE_6XJGR</h1>
 
-    <!-- ahora con los links reales -->
-    <a href="https://www.tiktok.com/@6xjgr" target="_blank" class="link-btn">TIKTOK</a>
-    <a href="https://discord.com/invite/6Zcb2PyyQu" target="_blank" class="link-btn">DISCORD</a>
-    <a href="https://www.instagram.com/_6xjgr_" target="_blank" class="link-btn">INSTAGRAM</a>
-    <a href="https://discord.com/invite/D6Pnp26XBm" target="_blank" class="link-btn">BURRITOLAND</a>
+    <a href="#" class="link-btn">TIKTOK</a>
+    <a href="#" class="link-btn">DISCORD</a>
+    <a href="#" class="link-btn">INSTAGRAM</a>
+    <a href="#" class="link-btn">BURRITOLAND</a>
 
     <div class="connections">
       <h3>Conexiones</h3>
       <div class="connection-item">
         <img src="Steamlogo.png" alt="Steam">
-        <a href="https://s.team/p/gqpt-wqnd/FPVBJCCH" target="_blank">Steam Profile</a>
+        <a href="#">Steam Profile</a>
       </div>
       <div class="connection-item">
         <img src="Epiclogo.png" alt="Epic Games">
-        <a href="https://store.epicgames.com/es-MX/u/d8ad574a03ef422684abc14a8ada16d7" target="_blank">Epic Games</a>
+        <a href="#">Epic Games</a>
       </div>
       <div class="connection-item">
         <img src="Xboxlogo.png" alt="Xbox">
-        <a href="https://www.xbox.com/es-MX/play/user/The%206XJGR" target="_blank">Xbox</a>
+        <a href="#">Xbox</a>
       </div>
     </div>
 
     <div class="footer">@6xjgr</div>
-    <img src="zerotwo.png" alt="Zero Two" class="waifu">
   </div>
 
-  <script>
-    const profileLink = document.getElementById('profileLink');
+  <img src="zerotwo.png" alt="Zero Two" class="waifu" id="waifu">
 
+  <script>
+    // ✨ Animación de partículas mejorada
+    const profileLink = document.getElementById('profileLink');
     profileLink.addEventListener('click', (e) => {
       const rect = profileLink.getBoundingClientRect();
       const offsetX = e.clientX - rect.left;
       const offsetY = e.clientY - rect.top;
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 25; i++) {
         const particle = document.createElement('span');
         particle.innerHTML = '✨';
         particle.classList.add('particle');
-
-        const x = (Math.random() - 0.5) * 500;
-        const y = (Math.random() - 0.5) * 500;
-
+        const x = (Math.random() - 0.5) * 700;
+        const y = (Math.random() - 0.5) * 700;
         particle.style.setProperty('--x', `${x}px`);
         particle.style.setProperty('--y', `${y}px`);
-
         particle.style.left = `${offsetX}px`;
         particle.style.top = `${offsetY}px`;
-
         profileLink.appendChild(particle);
-
-        setTimeout(() => particle.remove(), 1200);
+        setTimeout(() => particle.remove(), 1500);
       }
     });
+
+  
   </script>
 </body>
 </html>
